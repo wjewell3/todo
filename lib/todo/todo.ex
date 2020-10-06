@@ -10,9 +10,14 @@ defmodule Todo.Todo do
   end
 
   @doc false
-  def changeset(todo, attrs) do
-    todo
-    |> cast(attrs, [:action, :status])
+  # def changeset(todo, attrs) do
+  #   todo
+  #   |> cast(attrs, [:action, :status])
+  #   |> validate_required([:action, :status])
+  # end
+  def changeset(struct, params \\ %{}) do
+    struct
+    |> cast(params, [:action, :status])
     |> validate_required([:action, :status])
   end
 end
