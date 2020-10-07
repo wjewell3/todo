@@ -18,7 +18,7 @@ defmodule TodoWeb.Router do
 
     get "/", TodoController, :index
     get "/new", TodoController, :new
-    get "/todos", TodoController, :create
+    post "/todos", TodoController, :create
   end
 
   # Other scopes may use custom stacks.
