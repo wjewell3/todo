@@ -1,18 +1,21 @@
-<h5>ToDo List</h5>
+<table>
+  <thead>
+    <tr>
+      <th>Action</th>
+      <th>Status</th>
 
-
-<ul  class="collection">
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
   <%= for todo <- @todos do %>
-    <li class="collection-item">
-      <%= todo.action %>
-
-      <div class="right">
-        <%#= link "Edit", to: topic_path(@conn, :edit, todo) %> 
-        <%#= link "  Delete", to: topic_path(@conn, :delete, todo), method: :delete %> 
-      </div>
-    </li>
+      <tr>
+        <td><%= todo.action %></td>
+        <td><%= todo.status %></td>
+      </tr>
   <% end %>
-</ul>
+  </tbody>
+</table>
 
 <div class="fixed-action-btn">
   <%= link to: Routes.todo_path(@conn, :new), class: "btn-floating btn-large waves-effect waves-light red" do %>
