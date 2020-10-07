@@ -16,9 +16,11 @@ defmodule TodoWeb.Router do
   scope "/", TodoWeb do
     pipe_through :browser
 
-    get "/", TodoController, :index
-    get "/new", TodoController, :new
-    post "/todos", TodoController, :create
+    # get "/", TodoController, :index
+    # get "/new", TodoController, :new
+    # post "/todos", TodoController, :create
+    resources "/", TodoController
+
   end
 
   # Other scopes may use custom stacks.

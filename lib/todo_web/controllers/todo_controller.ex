@@ -29,7 +29,34 @@ defmodule TodoWeb.TodoController do
       {:error, changeset} ->
         render conn, "new.html", changeset: changeset
     end
+  end
 
+  def edit(conn, params) do
+    %{"id" => todo_id} = params
+    todo = Repo.get(Todo.Todo, todo_id)
+    changeset = Todo.Todo.changeset(todo)
+    render conn, "edit.html", changeset: changeset, todo: todo
+  end
+
+  def update(conn, %{"id" => todo_id, "todo" => todo_param}) do
+    old_todo = Repo.get(Todo.Todo, todo_id)
+    changeset = Todo.Todo.changeset(old_todo, todo_param)
+    case Repo.update(changeset) do
+      {:ok, _topic} ->
+        conn
+        |> put_flash(:info, "Todo Updated")
+        |> redirect(to: Routes.todo_path(conn, :index))
+      {:error, changeset} ->
+        render conn, "edit.html", changeset: changeset, todo: old_todo
+    end
+  end
+
+  def delete(conn, %{"id" => todo_id}) do
+    Repo.get!(Todo.Todo, todo_id) |> Repo.delete!
+
+    conn
+    |> put_flash(:info, "Todo Deleted")
+    |> redirect(to: Routes.todo_path(conn, :index))
   end
 
 end
