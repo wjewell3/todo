@@ -3,10 +3,18 @@
 <ul  class="collection">
   <%= for todo <- @todos do %>
     <li class="collection-item">
-      <%= todo.action %>
+    <%= case todo.status do %>
+            <% 1 -> %>
+              <s><%=todo.action%></s>
+
+                <% 0 -> %>
+              <%=todo.action%>
+              <% end %>
+      <%#= todo.action %>
 
       <div class="right">
-        <%= link "Edit", to: Routes.todo_path(@conn, :edit, todo) %> 
+        <%#= link "Complete", to: Routes.todo_path(@conn, :, todo) %> 
+        <%= link "  Edit", to: Routes.todo_path(@conn, :edit, todo) %> 
         <%= link "  Delete", to: Routes.todo_path(@conn, :delete, todo), method: :delete %> 
       </div>
     </li>
