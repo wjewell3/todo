@@ -3,11 +3,14 @@ defmodule TodoWeb.TodoController do
 
   #alias Todo.Todo
   alias Todo.Repo
+  alias TodoWeb.IndexLive
+  #import Phoenix.LiveView
   
 
   def index(conn, _params) do
-    todos = Repo.all(Todo.Todo)
-    render conn, "index.html", todos: todos
+    # todos = Repo.all(Todo.Todo)
+    # render conn, "index.html", todos: todos
+    #LiveView.Controller.live_render(conn, IndexLive, session: %{})
   end
 
   def new(conn, _params) do

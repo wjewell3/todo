@@ -17,14 +17,16 @@ defmodule TodoWeb.Router do
   scope "/", TodoWeb do
     pipe_through :browser
 
-    # get "/", TodoController, :index
-    # get "/new", TodoController, :new
-    # post "/", TodoController, :create
-    # get "/:id/edit", TodoController, :edit
-    # put "/:id", TodoController, :update
-    # delete "/:id", TodoController, :delete
     live "/counter", CounterLive
-    resources "/", TodoController
+    live "/", IndexLive
+    # get "/", TodoController, :index
+    get "/new", TodoController, :new
+    post "/", TodoController, :create
+    get "/:id/edit", TodoController, :edit
+    put "/:id", TodoController, :update
+    delete "/:id", TodoController, :delete
+    
+    # resources "/", TodoController
 
   end
 
