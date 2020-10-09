@@ -19,9 +19,13 @@ defmodule TodoWeb.Router do
 
     # get "/", TodoController, :index
     # get "/new", TodoController, :new
-    # post "/todos", TodoController, :create
+    # post "/", TodoController, :create
+    # get "/:id/edit", TodoController, :edit
+    # put "/:id", TodoController, :update
+    # delete "/:id", TodoController, :delete
+    live "/counter", CounterLive
     resources "/", TodoController
-    live "/todo", TodoLive
+
   end
 
   # Other scopes may use custom stacks.

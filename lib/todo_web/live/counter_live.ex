@@ -1,7 +1,7 @@
-defmodule TodoWeb.TodoLive do
+defmodule TodoWeb.CounterLive do
     use Phoenix.LiveView
 
-    def mount(_session, socket) do
+    def mount(_params, _session, socket) do
         socket = assign(socket, :count, 0)
         {:ok, socket}
     end
