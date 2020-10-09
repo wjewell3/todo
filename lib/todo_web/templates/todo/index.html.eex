@@ -4,16 +4,13 @@
   <%= for todo <- @todos do %>
     <li class="collection-item">
     <%= case todo.status do %>
-            <% 1 -> %>
-              <s><%=todo.action%></s>
-
-                <% 0 -> %>
-              <%=todo.action%>
-              <% end %>
-      <%#= todo.action %>
-
+          <% 1 -> %>
+            <s><%=todo.action%></s>
+          <% 0 -> %>
+            <%=todo.action%>
+        <% end %>
       <div class="right">
-        <%#= link "Complete", to: Routes.todo_path(@conn, :, todo) %> 
+        <%#= link "Complete", to: Routes.todo_path(@conn, :complete, todo) %> 
         <%= link "  Edit", to: Routes.todo_path(@conn, :edit, todo) %> 
         <%= link "  Delete", to: Routes.todo_path(@conn, :delete, todo), method: :delete %> 
       </div>

@@ -16,7 +16,7 @@ config :todo, TodoWeb.Endpoint,
   secret_key_base: "uqfCcI7hWhVw1asCynmF4KbJsgvBomjaIAV1Iaul8oil1b2Yyu6pUweu3HevQft+",
   render_errors: [view: TodoWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Todo.PubSub,
-  live_view: [signing_salt: "gvY9672e"]
+  live_view: [signing_salt: "SECRET_SALT"]
 
 # Configures Elixir's Logger
 config :logger, :console,
